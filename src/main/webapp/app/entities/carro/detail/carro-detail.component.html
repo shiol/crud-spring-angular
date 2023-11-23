@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="carro">
+      <h2 data-cy="carroDetailsHeading"><span jhiTranslate="crudApp.carro.detail.title">Carro</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ carro.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="crudApp.carro.year">Year</span></dt>
+        <dd>
+          <span>{{ carro.year }}</span>
+        </dd>
+        <dt><span jhiTranslate="crudApp.carro.licensePlate">License Plate</span></dt>
+        <dd>
+          <span>{{ carro.licensePlate }}</span>
+        </dd>
+        <dt><span jhiTranslate="crudApp.carro.model">Model</span></dt>
+        <dd>
+          <span>{{ carro.model }}</span>
+        </dd>
+        <dt><span jhiTranslate="crudApp.carro.color">Color</span></dt>
+        <dd>
+          <span>{{ carro.color }}</span>
+        </dd>
+        <dt><span jhiTranslate="crudApp.carro.usuario">Usuario</span></dt>
+        <dd>
+          <div *ngIf="carro.usuario">
+            <a [routerLink]="['/usuario', carro.usuario.id, 'view']">{{ carro.usuario.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/carro', carro.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

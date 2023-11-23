@@ -1,0 +1,28 @@
+{
+  "crudApp": {
+    "carro": {
+      "home": {
+        "title": "Carros",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Carro",
+        "createOrEditLabel": "Create or edit a Carro",
+        "notFound": "No Carros found"
+      },
+      "created": "A new Carro is created with identifier {{ param }}",
+      "updated": "A Carro is updated with identifier {{ param }}",
+      "deleted": "A Carro is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Carro {{ id }}?"
+      },
+      "detail": {
+        "title": "Carro"
+      },
+      "id": "ID",
+      "year": "Year",
+      "licensePlate": "License Plate",
+      "model": "Model",
+      "color": "Color",
+      "usuario": "Usuario"
+    }
+  }
+}

@@ -50,12 +50,12 @@ describe('MainComponent', () => {
     const defaultPageTitle = 'global.title';
     const parentRoutePageTitle = 'parentTitle';
     const childRoutePageTitle = 'childTitle';
-    const langChangeEvent: LangChangeEvent = { lang: 'pt-br', translations: null };
+    const langChangeEvent: LangChangeEvent = { lang: 'en', translations: null };
 
     beforeEach(() => {
       routerState.snapshot.root = { data: {} };
       jest.spyOn(translateService, 'get').mockImplementation((key: string | string[]) => of(`${key as string} translated`));
-      translateService.currentLang = 'pt-br';
+      translateService.currentLang = 'en';
       jest.spyOn(titleService, 'setTitle');
       comp.ngOnInit();
     });

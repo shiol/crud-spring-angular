@@ -8,8 +8,8 @@
       "entities": {
         "main": "Entities",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "crudCar": "Car",
-        "crudUser": "User"
+        "usuario": "Usuario",
+        "carro": "Carro"
       },
       "account": {
         "main": "Account",

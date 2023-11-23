@@ -2,9 +2,6 @@
 
 This application was generated using JHipster 8.0.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.0.0](https://www.jhipster.tech/documentation-archive/v8.0.0).
 
-This is a "microservice" application intended to be part of a microservice architecture, please refer to the [Doing microservices with JHipster][] page of the documentation for more information.
-This application is configured for Service Discovery and Configuration with Consul. On launch, it will refuse to start if it is not able to connect to Consul at [http://localhost:8500](http://localhost:8500). For more information, read our documentation on [Service Discovery and Configuration with Consul][].
-
 ## Project Structure
 
 Node is required for generation and recommended for development. `package.json` is always generated for a better development experience with prettier, commit hooks, scripts and so on.
@@ -38,13 +35,6 @@ npm install
 ```
 
 We use npm scripts and [Angular CLI][] with [Webpack][] as our build system.
-
-If you are using hazelcast as a cache, you will have to launch a cache server.
-To start your cache server, run:
-
-```
-docker compose -f src/main/docker/hazelcast-management-center.yml up -d
-```
 
 Run the following commands in two separate terminals to create a blissful development experience where your browser
 auto-refreshes when files change on your hard drive.
@@ -101,37 +91,6 @@ Note: There are still a few other things remaining to do for Leaflet that we won
 
 For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
 
-### Developing Microfrontend
-
-Microservices doesn't contain every required backend feature to allow microfrontends to run alone.
-You must start a pre-built gateway version or from source.
-
-Start gateway from source:
-
-```
-cd gateway
-npm run docker:db:up # start database if necessary
-npm run docker:others:up # start service discovery and authentication service if necessary
-npm run app:start # alias for ./(mvnw|gradlew)
-```
-
-Microfrontend's `build-watch` script is configured to watch and compile microfrontend's sources and synchronizes with gateway's frontend.
-Start it using:
-
-```
-cd microfrontend
-npm run docker:db:up # start database if necessary
-npm run build-watch
-```
-
-It's possible to run microfrontend's frontend standalone using:
-
-```
-cd microfrontend
-npm run docker:db:up # start database if necessary
-npm watch # alias for `npm start` and `npm run backend:start` in parallel
-```
-
 ### Using Angular CLI
 
 You can also use [Angular CLI][] to generate some custom client code.
@@ -167,7 +126,7 @@ To ensure everything worked, run:
 java -jar target/*.jar
 ```
 
-Then navigate to [http://localhost:8081](http://localhost:8081) in your browser.
+Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
 
 Refer to [Using JHipster in production][] for more details.
 
@@ -203,16 +162,6 @@ Unit tests are run by [Jest][]. They're located in [src/test/javascript/](src/te
 
 ```
 npm test
-```
-
-### Gatling
-
-Performance tests are run by [Gatling][] and written in Scala. They're located in [src/test/java/gatling/simulations](src/test/java/gatling/simulations).
-
-You can execute all Gatling tests with
-
-```
-./mvnw gatling:test
 ```
 
 ## Others
@@ -295,9 +244,7 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 
 [JHipster Homepage and latest documentation]: https://www.jhipster.tech
 [JHipster 8.0.0 archive]: https://www.jhipster.tech/documentation-archive/v8.0.0
-[Doing microservices with JHipster]: https://www.jhipster.tech/documentation-archive/v8.0.0/microservices-architecture/
 [Using JHipster in development]: https://www.jhipster.tech/documentation-archive/v8.0.0/development/
-[Service Discovery and Configuration with Consul]: https://www.jhipster.tech/documentation-archive/v8.0.0/microservices-architecture/#consul
 [Using Docker and Docker-Compose]: https://www.jhipster.tech/documentation-archive/v8.0.0/docker-compose
 [Using JHipster in production]: https://www.jhipster.tech/documentation-archive/v8.0.0/production/
 [Running tests page]: https://www.jhipster.tech/documentation-archive/v8.0.0/running-tests/
@@ -311,4 +258,3 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [Leaflet]: https://leafletjs.com/
 [DefinitelyTyped]: https://definitelytyped.org/
 [Angular CLI]: https://cli.angular.io/
-[Gatling]: https://gatling.io/

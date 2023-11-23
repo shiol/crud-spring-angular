@@ -28,8 +28,6 @@
     "ci:frontend:test": "npm run ci:frontend:build && npm test",
     "clean-www": "rimraf target/classes/static/",
     "cleanup": "rimraf target/",
-    "docker:consul:down": "docker compose -f src/main/docker/consul.yml down -v",
-    "docker:consul:up": "docker compose -f src/main/docker/consul.yml up --wait",
     "docker:db:down": "docker compose -f src/main/docker/mariadb.yml down -v",
     "docker:db:up": "docker compose -f src/main/docker/mariadb.yml up --wait",
     "java:docker": "./mvnw -ntp verify -DskipTests -Pprod jib:dockerBuild",
@@ -50,7 +48,7 @@
     "prettier:format": "prettier --write \"{,src/**/,webpack/,.blueprint/**/}*.{md,json,yml,html,cjs,mjs,js,ts,tsx,css,scss,java}\"",
     "serve": "npm run start --",
     "services:up": "docker compose -f src/main/docker/services.yml up --wait",
-    "start": "ng serve",
+    "start": "ng serve --hmr",
     "start-tls": "npm run webapp:dev-ssl",
     "pretest": "npm run lint",
     "test": "ng test --coverage --log-heap-usage -w=2",
@@ -71,7 +69,6 @@
     "packaging": "jar"
   },
   "dependencies": {
-    "@angular-architects/module-federation": "^17.0.1",
     "@angular/common": "16.2.11",
     "@angular/compiler": "16.2.11",
     "@angular/core": "16.2.11",

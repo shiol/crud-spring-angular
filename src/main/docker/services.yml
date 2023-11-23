@@ -5,11 +5,3 @@ services:
     extends:
       file: ./mariadb.yml
       service: mariadb
-  consul:
-    extends:
-      file: ./consul.yml
-      service: consul
-  consul-config-loader:
-    extends:
-      file: ./consul.yml
-      service: consul-config-loader

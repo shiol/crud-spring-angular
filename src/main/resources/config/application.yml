@@ -24,14 +24,6 @@ springdoc:
   api-docs:
     enabled: false
 ---
-feign:
-  circuitbreaker:
-    enabled: true
-  # client:
-  #   config:
-  #     default:
-  #       connectTimeout: 5000
-  #       readTimeout: 5000
 management:
   endpoints:
     web:
@@ -98,15 +90,6 @@ management:
 spring:
   application:
     name: crud
-  cloud:
-    consul:
-      discovery:
-        healthCheckPath: /management/health
-        instanceId: crud:${spring.application.instance-id:${random.value}}
-        service-name: crud
-      config:
-        watch:
-          enabled: false
   profiles:
     # The commented value for `active` can be replaced with valid Spring profiles to load.
     # Otherwise, it will be filled in by maven when building the JAR file
@@ -141,10 +124,6 @@ spring:
       hibernate.order_updates: true
       hibernate.query.fail_on_pagination_over_collection_fetch: true
       hibernate.query.in_clause_parameter_padding: true
-      hibernate.cache.region.factory_class: com.hazelcast.hibernate.HazelcastCacheRegionFactory
-      hibernate.cache.use_minimal_puts: true
-      hibernate.cache.hazelcast.instance_name: crud
-      hibernate.cache.hazelcast.use_lite_member: true
     hibernate:
       ddl-auto: none
       naming:

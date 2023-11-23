@@ -16,14 +16,6 @@
 spring:
   application:
     name: crud
-  cloud:
-    consul:
-      discovery:
-        enabled: false
-        instanceId: ${spring.application.name}:${spring.application.instance-id:${random.value}}
-      config:
-        enabled: false
-      enabled: false
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     contexts: test
@@ -77,7 +69,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-        base64-secret: ZmYyNzU3MzM4ZDM2NDViN2JkMDg5MzQ1OTcyNjE1NTNmNTAzNGU0MTYyODQ0M2ZhYzVkMzFhOWE2ZWM0Nzc0ZTZmMGE0ZWFlOTRiMGJkZTliMGY4NDhhNTQxNzIwZjlkYjgyZDdjOTk0NmU1NGI5YjJhYzNjNjRkMGViNDhjMjg=
+        base64-secret: MWE3YWEwYzZiYmM5MjMwOTBlMTRjYjkwNjA0M2Q1NTZjZjgyYzVkNDFhOGRiZDU2ZGJiNmRkNTdkMjhkMjBjZTQzODcxZmUyZjQxZTA4M2I2ZmYzZjIwOGM2Y2MxOTEyMjhiYmQzNjUyZWFjN2Q4MTk1ODhjYzllODZkNWI1NjI=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 86400

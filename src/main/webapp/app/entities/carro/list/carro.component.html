@@ -1,0 +1,110 @@
+<div>
+  <h2 id="page-heading" data-cy="CarroHeading">
+    <span jhiTranslate="crudApp.carro.home.title">Carros</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="crudApp.carro.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-carro"
+        [routerLink]="['/carro/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="crudApp.carro.home.createLabel">Create a new Carro</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="carros?.length === 0">
+    <span jhiTranslate="crudApp.carro.home.notFound">No Carros found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="carros && carros.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="year">
+            <div class="d-flex">
+              <span jhiTranslate="crudApp.carro.year">Year</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="licensePlate">
+            <div class="d-flex">
+              <span jhiTranslate="crudApp.carro.licensePlate">License Plate</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="model">
+            <div class="d-flex">
+              <span jhiTranslate="crudApp.carro.model">Model</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="color">
+            <div class="d-flex">
+              <span jhiTranslate="crudApp.carro.color">Color</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="usuario.id">
+            <div class="d-flex">
+              <span jhiTranslate="crudApp.carro.usuario">Usuario</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let carro of carros; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/carro', carro.id, 'view']">{{ carro.id }}</a>
+          </td>
+          <td>{{ carro.year }}</td>
+          <td>{{ carro.licensePlate }}</td>
+          <td>{{ carro.model }}</td>
+          <td>{{ carro.color }}</td>
+          <td>
+            <div *ngIf="carro.usuario">
+              <a [routerLink]="['/usuario', carro.usuario.id, 'view']">{{ carro.usuario.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <a [routerLink]="['/carro', carro.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </a>
+
+              <a [routerLink]="['/carro', carro.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </a>
+
+              <button type="submit" (click)="delete(carro)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

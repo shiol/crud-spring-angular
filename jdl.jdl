@@ -1,11 +1,4 @@
-entity Car {
-	year Integer
-    licensePlate String
-    model String
-    color String
-}
-
-entity User {
+entity Usuario {
 	firstName String
     lastName String
     email String
@@ -15,6 +8,13 @@ entity User {
     phone String
 }
 
-//relationship ManyToOne {
-//	Car{user} to User{cars}
-//}
+entity Carro {
+	year Integer
+    licensePlate String
+    model String
+    color String
+}
+
+relationship OneToMany {
+	Usuario{carro} to Carro{usuario}
+}
