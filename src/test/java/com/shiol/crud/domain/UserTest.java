@@ -1,12 +1,9 @@
 package com.shiol.crud.domain;
 
-import static com.shiol.crud.domain.CarTestSamples.*;
 import static com.shiol.crud.domain.UserTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.shiol.crud.web.rest.TestUtil;
-import java.util.HashSet;
-import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 class UserTest {
@@ -23,27 +20,5 @@ class UserTest {
 
         user2 = getUserSample2();
         assertThat(user1).isNotEqualTo(user2);
-    }
-
-    @Test
-    void carsTest() throws Exception {
-        User user = getUserRandomSampleGenerator();
-        Car carBack = getCarRandomSampleGenerator();
-
-        user.addCars(carBack);
-        assertThat(user.getCars()).containsOnly(carBack);
-        assertThat(carBack.getUser()).isEqualTo(user);
-
-        user.removeCars(carBack);
-        assertThat(user.getCars()).doesNotContain(carBack);
-        assertThat(carBack.getUser()).isNull();
-
-        user.cars(new HashSet<>(Set.of(carBack)));
-        assertThat(user.getCars()).containsOnly(carBack);
-        assertThat(carBack.getUser()).isEqualTo(user);
-
-        user.setCars(new HashSet<>());
-        assertThat(user.getCars()).doesNotContain(carBack);
-        assertThat(carBack.getUser()).isNull();
     }
 }

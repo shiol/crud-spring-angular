@@ -1,6 +1,5 @@
 package com.shiol.crud.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import org.hibernate.annotations.Cache;
@@ -34,10 +33,6 @@ public class Car implements Serializable {
 
     @Column(name = "color")
     private String color;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "cars" }, allowSetters = true)
-    private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -104,19 +99,6 @@ public class Car implements Serializable {
 
     public void setColor(String color) {
         this.color = color;
-    }
-
-    public User getUser() {
-        return this.user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Car user(User user) {
-        this.setUser(user);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

@@ -15,6 +15,6 @@ entity User {
     phone String
 }
 
-relationship ManyToOne {
-	Car{user} to User{cars}
-}
+//relationship ManyToOne {
+//	Car{user} to User{cars}
+//}

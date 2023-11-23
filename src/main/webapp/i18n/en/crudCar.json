@@ -21,8 +21,7 @@
       "year": "Year",
       "licensePlate": "License Plate",
       "model": "Model",
-      "color": "Color",
-      "user": "User"
+      "color": "Color"
     }
   }
 }

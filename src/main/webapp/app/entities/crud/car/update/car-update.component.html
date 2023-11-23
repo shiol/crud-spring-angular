@@ -39,14 +39,6 @@
           <label class="form-label" jhiTranslate="crudApp.crudCar.color" for="field_color">Color</label>
           <input type="text" class="form-control" name="color" id="field_color" data-cy="color" formControlName="color" />
         </div>
-
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="crudApp.crudCar.user" for="field_user">User</label>
-          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
-            <option [ngValue]="null"></option>
-            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.id }}</option>
-          </select>
-        </div>
       </div>
 
       <div>

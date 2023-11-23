@@ -1,7 +1,6 @@
 package com.shiol.crud.domain;
 
 import static com.shiol.crud.domain.CarTestSamples.*;
-import static com.shiol.crud.domain.UserTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.shiol.crud.web.rest.TestUtil;
@@ -21,17 +20,5 @@ class CarTest {
 
         car2 = getCarSample2();
         assertThat(car1).isNotEqualTo(car2);
-    }
-
-    @Test
-    void userTest() throws Exception {
-        Car car = getCarRandomSampleGenerator();
-        User userBack = getUserRandomSampleGenerator();
-
-        car.setUser(userBack);
-        assertThat(car.getUser()).isEqualTo(userBack);
-
-        car.user(null);
-        assertThat(car.getUser()).isNull();
     }
 }

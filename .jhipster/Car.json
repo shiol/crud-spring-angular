@@ -24,14 +24,6 @@
   ],
   "microserviceName": "crud",
   "name": "Car",
-  "relationships": [
-    {
-      "otherEntityName": "user",
-      "otherEntityRelationshipName": "cars",
-      "relationshipName": "user",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    }
-  ],
+  "relationships": [],
   "searchEngine": "no"
 }

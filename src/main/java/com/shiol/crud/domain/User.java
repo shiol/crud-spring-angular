@@ -1,11 +1,8 @@
 package com.shiol.crud.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -46,11 +43,6 @@ public class User implements Serializable {
 
     @Column(name = "phone")
     private String phone;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "user" }, allowSetters = true)
-    private Set<Car> cars = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -156,37 +148,6 @@ public class User implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public Set<Car> getCars() {
-        return this.cars;
-    }
-
-    public void setCars(Set<Car> cars) {
-        if (this.cars != null) {
-            this.cars.forEach(i -> i.setUser(null));
-        }
-        if (cars != null) {
-            cars.forEach(i -> i.setUser(this));
-        }
-        this.cars = cars;
-    }
-
-    public User cars(Set<Car> cars) {
-        this.setCars(cars);
-        return this;
-    }
-
-    public User addCars(Car car) {
-        this.cars.add(car);
-        car.setUser(this);
-        return this;
-    }
-
-    public User removeCars(Car car) {
-        this.cars.remove(car);
-        car.setUser(null);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

@@ -24,7 +24,6 @@ describe('Car Form Service', () => {
             licensePlate: expect.any(Object),
             model: expect.any(Object),
             color: expect.any(Object),
-            user: expect.any(Object),
           }),
         );
       });
@@ -39,7 +38,6 @@ describe('Car Form Service', () => {
             licensePlate: expect.any(Object),
             model: expect.any(Object),
             color: expect.any(Object),
-            user: expect.any(Object),
           }),
         );
       });

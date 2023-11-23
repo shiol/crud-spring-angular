@@ -24,8 +24,7 @@
       "birthday": "Birthday",
       "login": "Login",
       "password": "Password",
-      "phone": "Phone",
-      "cars": "Cars"
+      "phone": "Phone"
     }
   }
 }

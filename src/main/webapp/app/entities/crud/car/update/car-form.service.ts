@@ -22,7 +22,6 @@ type CarFormGroupContent = {
   licensePlate: FormControl<ICar['licensePlate']>;
   model: FormControl<ICar['model']>;
   color: FormControl<ICar['color']>;
-  user: FormControl<ICar['user']>;
 };
 
 export type CarFormGroup = FormGroup<CarFormGroupContent>;
@@ -46,7 +45,6 @@ export class CarFormService {
       licensePlate: new FormControl(carRawValue.licensePlate),
       model: new FormControl(carRawValue.model),
       color: new FormControl(carRawValue.color),
-      user: new FormControl(carRawValue.user),
     });
   }
 

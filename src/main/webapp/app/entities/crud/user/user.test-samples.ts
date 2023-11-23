@@ -3,25 +3,25 @@ import dayjs from 'dayjs/esm';
 import { IUser, NewUser } from './user.model';
 
 export const sampleWithRequiredData: IUser = {
-  id: 16017,
+  id: 18163,
 };
 
 export const sampleWithPartialData: IUser = {
-  id: 368,
-  lastName: 'Souza',
-  login: 'bravely arctic like',
-  phone: '(93) 76581-1027',
+  id: 12425,
+  firstName: 'Théo',
+  email: 'Gael.Barros67@gmail.com',
+  login: 'document',
 };
 
 export const sampleWithFullData: IUser = {
-  id: 16799,
-  firstName: 'Tertuliano',
-  lastName: 'Melo',
-  email: 'Warley.Braga52@bol.com.br',
-  birthday: dayjs('2023-11-22T11:31'),
-  login: 'shrilly wise',
-  password: 'interestingly geez',
-  phone: '(11) 0118-0506',
+  id: 29162,
+  firstName: 'Natália',
+  lastName: 'Silva',
+  email: 'Cecilia_Costa@yahoo.com',
+  birthday: dayjs('2023-11-22T12:09'),
+  login: 'dense amidst limp',
+  password: 'adolescent however',
+  phone: '+55 (94) 1606-9233',
 };
 
 export const sampleWithNewData: NewUser = {

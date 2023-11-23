@@ -2,13 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize, map } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
 
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { IUser } from 'app/entities/crud/user/user.model';
-import { UserService } from 'app/entities/crud/user/service/user.service';
 import { ICar } from '../car.model';
 import { CarService } from '../service/car.service';
 import { CarFormService, CarFormGroup } from './car-form.service';
@@ -23,18 +21,13 @@ export class CarUpdateComponent implements OnInit {
   isSaving = false;
   car: ICar | null = null;
 
-  usersSharedCollection: IUser[] = [];
-
   editForm: CarFormGroup = this.carFormService.createCarFormGroup();
 
   constructor(
     protected carService: CarService,
     protected carFormService: CarFormService,
-    protected userService: UserService,
     protected activatedRoute: ActivatedRoute,
   ) {}
-
-  compareUser = (o1: IUser | null, o2: IUser | null): boolean => this.userService.compareUser(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ car }) => {
@@ -42,8 +35,6 @@ export class CarUpdateComponent implements OnInit {
       if (car) {
         this.updateForm(car);
       }
-
-      this.loadRelationshipsOptions();
     });
   }
 
@@ -83,15 +74,5 @@ export class CarUpdateComponent implements OnInit {
   protected updateForm(car: ICar): void {
     this.car = car;
     this.carFormService.resetForm(this.editForm, car);
-
-    this.usersSharedCollection = this.userService.addUserToCollectionIfMissing<IUser>(this.usersSharedCollection, car.user);
-  }
-
-  protected loadRelationshipsOptions(): void {
-    this.userService
-      .query()
-      .pipe(map((res: HttpResponse<IUser[]>) => res.body ?? []))
-      .pipe(map((users: IUser[]) => this.userService.addUserToCollectionIfMissing<IUser>(users, this.car?.user)))
-      .subscribe((users: IUser[]) => (this.usersSharedCollection = users));
   }
 }

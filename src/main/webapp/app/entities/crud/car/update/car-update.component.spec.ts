@@ -6,8 +6,6 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, Subject, from } from 'rxjs';
 
-import { IUser } from 'app/entities/crud/user/user.model';
-import { UserService } from 'app/entities/crud/user/service/user.service';
 import { CarService } from '../service/car.service';
 import { ICar } from '../car.model';
 import { CarFormService } from './car-form.service';
@@ -20,7 +18,6 @@ describe('Car Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let carFormService: CarFormService;
   let carService: CarService;
-  let userService: UserService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -42,43 +39,17 @@ describe('Car Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     carFormService = TestBed.inject(CarFormService);
     carService = TestBed.inject(CarService);
-    userService = TestBed.inject(UserService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should call User query and add missing value', () => {
-      const car: ICar = { id: 456 };
-      const user: IUser = { id: 18163 };
-      car.user = user;
-
-      const userCollection: IUser[] = [{ id: 9978 }];
-      jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
-      const additionalUsers = [user];
-      const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
-      jest.spyOn(userService, 'addUserToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ car });
-      comp.ngOnInit();
-
-      expect(userService.query).toHaveBeenCalled();
-      expect(userService.addUserToCollectionIfMissing).toHaveBeenCalledWith(
-        userCollection,
-        ...additionalUsers.map(expect.objectContaining),
-      );
-      expect(comp.usersSharedCollection).toEqual(expectedCollection);
-    });
-
     it('Should update editForm', () => {
       const car: ICar = { id: 456 };
-      const user: IUser = { id: 21687 };
-      car.user = user;
 
       activatedRoute.data = of({ car });
       comp.ngOnInit();
 
-      expect(comp.usersSharedCollection).toContain(user);
       expect(comp.car).toEqual(car);
     });
   });
@@ -148,18 +119,6 @@ describe('Car Management Update Component', () => {
       expect(carService.update).toHaveBeenCalled();
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
-    });
-  });
-
-  describe('Compare relationships', () => {
-    describe('compareUser', () => {
-      it('Should forward to userService', () => {
-        const entity = { id: 123 };
-        const entity2 = { id: 456 };
-        jest.spyOn(userService, 'compareUser');
-        comp.compareUser(entity, entity2);
-        expect(userService.compareUser).toHaveBeenCalledWith(entity, entity2);
-      });
     });
   });
 });
