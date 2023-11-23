@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="user">
+      <h2 data-cy="userDetailsHeading"><span jhiTranslate="crudApp.crudUser.detail.title">User</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">Código</span></dt>
+        <dd>
+          <span>{{ user.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="crudApp.crudUser.firstName">First Name</span></dt>
+        <dd>
+          <span>{{ user.firstName }}</span>
+        </dd>
+        <dt><span jhiTranslate="crudApp.crudUser.lastName">Last Name</span></dt>
+        <dd>
+          <span>{{ user.lastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="crudApp.crudUser.email">Email</span></dt>
+        <dd>
+          <span>{{ user.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="crudApp.crudUser.birthday">Birthday</span></dt>
+        <dd>
+          <span>{{ user.birthday | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="crudApp.crudUser.login">Login</span></dt>
+        <dd>
+          <span>{{ user.login }}</span>
+        </dd>
+        <dt><span jhiTranslate="crudApp.crudUser.password">Password</span></dt>
+        <dd>
+          <span>{{ user.password }}</span>
+        </dd>
+        <dt><span jhiTranslate="crudApp.crudUser.phone">Phone</span></dt>
+        <dd>
+          <span>{{ user.phone }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+      </button>
+
+      <button type="button" [routerLink]="['/crud/user', user.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

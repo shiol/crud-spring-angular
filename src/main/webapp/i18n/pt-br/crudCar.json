@@ -1,0 +1,28 @@
+{
+  "crudApp": {
+    "crudCar": {
+      "home": {
+        "title": "Cars",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Car",
+        "createOrEditLabel": "Criar ou editar Car",
+        "notFound": "Nenhum Car encontrado"
+      },
+      "created": "Um novo Car foi criado com o identificador {{ param }}",
+      "updated": "Um Car foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Car foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Car {{ id }}?"
+      },
+      "detail": {
+        "title": "Car"
+      },
+      "id": "ID",
+      "year": "Year",
+      "licensePlate": "License Plate",
+      "model": "Model",
+      "color": "Color",
+      "user": "User"
+    }
+  }
+}

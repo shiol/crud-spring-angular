@@ -1,0 +1,20 @@
+entity Car {
+	year Integer
+    licensePlate String
+    model String
+    color String
+}
+
+entity User {
+	firstName String
+    lastName String
+    email String
+    birthday Instant
+    login String
+    password String
+    phone String
+}
+
+relationship ManyToOne {
+	Car{user} to User{cars}
+}
